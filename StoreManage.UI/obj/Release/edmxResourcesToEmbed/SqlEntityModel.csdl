@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="imagesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AuthUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPermission" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customers__Modif__17036CC0" FromRole="Country" ToRole="Customers" />
+    <NavigationProperty Name="Stores" Relationship="Self.FK__Store__ModifyDat__6EF57B66" FromRole="Country" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Country" Relationship="Self.FK__Customers__Modif__17036CC0" FromRole="Customers" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Orders__ProductI__00200768" FromRole="Orders" ToRole="Products" />
+    <NavigationProperty Name="OrderStatu" Relationship="Self.FK__Orders__StatusID__7F2BE32F" FromRole="Orders" ToRole="OrderStatus" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__Orders__StoreID__01142BA1" FromRole="Orders" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__StatusID__7F2BE32F" FromRole="OrderStatus" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <Property Name="InStock" Type="Boolean" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ProductI__00200768" FromRole="Products" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Country" Relationship="Self.FK__Store__ModifyDat__6EF57B66" FromRole="Store" ToRole="Country" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__StoreID__01142BA1" FromRole="Store" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="UserPermissions">
+    <Key>
+      <PropertyRef Name="PermissionID" />
+    </Key>
+    <Property Name="PermissionID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK__Customers__Modif__17036CC0">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Customers" Type="imagesModel.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Store__ModifyDat__6EF57B66">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Store" Type="Self.Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Store">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__ProductI__00200768">
+    <End Role="Products" Type="imagesModel.Products" Multiplicity="1" />
+    <End Role="Orders" Type="imagesModel.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__StatusID__7F2BE32F">
+    <End Role="OrderStatus" Type="imagesModel.OrderStatus" Multiplicity="1" />
+    <End Role="Orders" Type="imagesModel.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__StoreID__01142BA1">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Orders" Type="imagesModel.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AuthUsers" EntityType="Self.AuthUser" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Customers1" EntityType="imagesModel.Customers" />
+    <EntitySet Name="Orders1" EntityType="imagesModel.Orders" />
+    <EntitySet Name="OrderStatus1" EntityType="imagesModel.OrderStatus" />
+    <EntitySet Name="Products1" EntityType="imagesModel.Products" />
+    <EntitySet Name="Stores" EntityType="Self.Store" />
+    <EntitySet Name="UserPermissions1" EntityType="imagesModel.UserPermissions" />
+    <AssociationSet Name="FK__Customers__Modif__17036CC0" Association="Self.FK__Customers__Modif__17036CC0">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Customers" EntitySet="Customers1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Store__ModifyDat__6EF57B66" Association="Self.FK__Store__ModifyDat__6EF57B66">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Store" EntitySet="Stores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__ProductI__00200768" Association="Self.FK__Orders__ProductI__00200768">
+      <End Role="Products" EntitySet="Products1" />
+      <End Role="Orders" EntitySet="Orders1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__StatusID__7F2BE32F" Association="Self.FK__Orders__StatusID__7F2BE32F">
+      <End Role="OrderStatus" EntitySet="OrderStatus1" />
+      <End Role="Orders" EntitySet="Orders1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__StoreID__01142BA1" Association="Self.FK__Orders__StoreID__01142BA1">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Orders" EntitySet="Orders1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

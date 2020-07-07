@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="StoreManagementEntities-Web.config Connection String" description="StoreManagementEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/SqlEntityModel.csdl|res://*/SqlEntityModel.ssdl|res://*/SqlEntityModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=ALEXV\TESTINSTANCE;initial catalog=images;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\alexv\\source\\repos\\StoreManage\.UI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='StoreManagementEntities']/@connectionString" />
+  </parameter>
+</parameters>

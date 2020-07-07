@@ -1,0 +1,91 @@
+﻿@model IEnumerable<StoreManage.UI.Products>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    
+
+<h2>
+    Products
+
+
+    <a href="@Url.Action("Create", "Products")" class="btn btn-default"> <i class="fa fa-plus-circle"></i> Add new product</a>
+
+    @*@Html.ActionLink("Create New", "Create") *@
+</h2>
+<hr />
+
+
+
+
+
+@using (Html.BeginForm("Index", "Products", FormMethod.Get))
+{
+    <p>
+        <b>Find by name/price:</b>
+
+        @Html.RadioButton("searchBy", "All", true) <text> All</text>
+        @Html.RadioButton("searchBy", "Name") <text> Name</text>
+        @Html.RadioButton("searchBy", "Price") <text>Price </text>
+        <br />
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+        
+    </p>
+}<br />
+
+<table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.InStock)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+                @if (item.InStock == true)
+                {
+                    <i class="fa fa-check-circle"></i>
+                }
+                else
+                {
+                    <i class="fa fa-times-circle"></i>
+                }
+                @*@Html.DisplayTextFor(modelItem => item.InStock)*@
+
+            </td>
+            <td>
+                @Html.ActionLink(" Edit ", "Edit", new { id = item.ProductID } ,new { @class = "fa fa-pencil" })  |
+                @Html.ActionLink(" Details ", "Details", new { id = item.ProductID }, new { @class = "fa fa-list" }) |
+                @Html.ActionLink(" Delete ", "Delete", new { id = item.ProductID }, new { @class = "fa fa-eraser" })
+
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+   
