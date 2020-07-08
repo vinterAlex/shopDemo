@@ -43,16 +43,6 @@ namespace StoreManage.UI.Controllers
             return View(await db.Products1.ToListAsync());
 
 
-            //var productItems = from i in db.Products1
-            //                   select i;
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    productItems = productItems.Where(p => p.Name.Contains(searchString));
-            //}
-
-
-            //return View( productItems.ToList());
-            //return View(await db.Products1.ToListAsync());
         }
 
         // GET: Products/Details/5

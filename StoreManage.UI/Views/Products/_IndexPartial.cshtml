@@ -1,0 +1,17 @@
+﻿
+
+
+@using (Html.BeginForm("Index", "Products", FormMethod.Get))
+{
+    <p>
+        <b>Find by name/price:</b>
+
+        @Html.RadioButton("searchBy", "All", true) <text> All</text>
+        @Html.RadioButton("searchBy", "Name") <text> Name</text>
+        @Html.RadioButton("searchBy", "Price") <text>Price </text>
+        <br />
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+
+    </p>
+}
