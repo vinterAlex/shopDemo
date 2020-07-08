@@ -83,6 +83,17 @@
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
+    },
+    "Y:\\shopDemo\\StoreManagement.Classes\\StoreManagement.Classes.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "Y:\\shopDemo\\StoreManagement.Classes\\StoreManagement.Classes.csproj",
+        "projectName": "StoreManagement.Classes",
+        "projectPath": "Y:\\shopDemo\\StoreManagement.Classes\\StoreManagement.Classes.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
     }
   }
 }

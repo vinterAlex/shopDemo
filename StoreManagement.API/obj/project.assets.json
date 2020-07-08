@@ -1106,6 +1106,15 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "StoreManagement.Classes/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/StoreManagement.Classes.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StoreManagement.Classes.dll": {}
+        }
       }
     }
   },
@@ -2817,6 +2826,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "StoreManagement.Classes/1.0.0": {
+      "type": "project",
+      "path": "../StoreManagement.Classes/StoreManagement.Classes.csproj",
+      "msbuildProject": "../StoreManagement.Classes/StoreManagement.Classes.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2824,8 +2838,8 @@
       "Microsoft.AspNetCore >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.4",
       "Microsoft.EntityFrameworkCore >= 3.1.4",
-      "System.Data.SqlClient >= 4.8.1",
-      "Y:\\shopDemo\\StoreManagement.Classes\\StoreManagement.Classes.csproj"
+      "StoreManagement.Classes >= 1.0.0",
+      "System.Data.SqlClient >= 4.8.1"
     ]
   },
   "packageFolders": {
@@ -2911,16 +2925,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'Y:\\shopDemo\\StoreManagement.Classes\\StoreManagement.Classes.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so please run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "Y:\\shopDemo\\StoreManagement.Classes\\StoreManagement.Classes.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }
